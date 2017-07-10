@@ -1,5 +1,4 @@
 <h1>ToDo Task</h1>
-<p>this is done on server-side by author</p>
 {{ tasks | json }}
 <form (ngSubmit)="add()">
     <div class="checkbox" *ngFor="let t of tasks">
