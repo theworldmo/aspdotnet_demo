@@ -2,14 +2,14 @@
 <form (ngSubmit)="add()">
     <div class="checkbox" *ngFor="let t of tasks">
         <label for="task{{ t.id }}">
-            <input type="checkbox" id="task{{ t.id }}" [checked]="t.isDone" (change)="t.isDone = !t.isDone; update(t)"> 
+            <input type="checkbox" id="task{{ t.id }}" [checked]="t.isDone" (change)="update(t)"> 
             {{ t.desc }},
             {{ t.isDone }}
         </label>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" id="newTask" (enter)="add()"
-            [(ngModel)]="task.desc" name="newTask">     
+        <input type="text" class="form-control" id="taskDesc" (enter)="add()"
+            [(ngModel)]="task.desc" name="taskDesc">     
     </div>
     <button class="btn btn-primary">Add</button>
 </form>

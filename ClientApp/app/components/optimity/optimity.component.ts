@@ -35,9 +35,10 @@ export class OptimityComponent implements OnInit, OnDestroy {
   }
 
   update(t){
+    t.isDone = !t.isDone; 
     this.taskService.updateTask(t)
       .subscribe(res => {
-        console.log(res);
+        //console.log(res);
       });
   }
 
