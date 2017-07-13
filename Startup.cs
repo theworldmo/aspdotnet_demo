@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Vega.Persistence;
+using vega.Persistence;
 using AutoMapper;
 
 namespace WebApplicationBasic
@@ -35,7 +35,12 @@ namespace WebApplicationBasic
             services.AddDbContext<JmoDbContext>
                 (options => options.UseSqlServer(this.Configuration["ConnectionStrings:Default"]));
             // Add framework services.
-            services.AddMvc();
+            // the following line can solve null issue
+            services.AddMvc().AddJsonOptions(jsonOptions => 
+                {
+                    jsonOptions.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

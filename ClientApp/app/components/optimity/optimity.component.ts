@@ -9,49 +9,38 @@ import { TimerObservable } from "rxjs/observable/TimerObservable";
   styleUrls: ['./optimity.component.css']
 })
 export class OptimityComponent implements OnInit, OnDestroy {
-  private newTask: string;
-  //private now: Date = new Date();
-  //private subscription: Subscription;
-  private tasks: any[] = [
-    {
-      id:1,
-      desc:"buy milk",
-      isDone:false
-    },
-    {
-      id:2,
-      desc:"buy egg",
-      isDone:false
-    },
-    {
-      id:3,
-      desc:"buy noodle",
-      isDone:false
-    }
-  ];
+  
+  private task: any = {
+    id: null,
+    desc: "",
+    isDone: false
+  };
 
-  constructor(
-    private taskService: TaskService) {
+  private tasks: any[] = [];
+
+  constructor(private taskService: TaskService) {
   }
 
   ngOnInit() {
-  /*
-    var timer = TimerObservable.create(0,1000);
-    this.subscription = timer.subscribe(tm => {
-      this.now = new Date();
-    })
-  */
+    this.taskService.getTasks()
+      .subscribe(res => this.tasks = res);
   }
 
-  add(){
-    this.taskService.createTask(this.newTask)
-      .subscribe(res => console.log(res));
+  add() {
+    this.taskService.createTask(this.task)
+      .subscribe(res => {
+        this.tasks = res;
+      });
+    this.task.desc = "";
+  }
+
+  update(t){
+    this.taskService.updateTask(t)
+      .subscribe(res => {
+        console.log(res);
+      });
   }
 
   ngOnDestroy(): void {
-  /*
-    this.subscription.unsubscribe();
-    console.log("timer ends");
-  */
   }
 }

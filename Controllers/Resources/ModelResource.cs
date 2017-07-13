@@ -1,6 +1,6 @@
-using Vega.Models;
+using vega.Models;
 
-namespace Vega.Controllers.Resources
+namespace vega.Controllers.Resources
 {
     public class ModelResource
     {

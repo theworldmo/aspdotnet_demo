@@ -1,16 +1,15 @@
 <h1>ToDo Task</h1>
-{{ tasks | json }}
 <form (ngSubmit)="add()">
     <div class="checkbox" *ngFor="let t of tasks">
         <label for="task{{ t.id }}">
-            <input type="checkbox" id="task{{ t.id }}" [checked]="t.isDone" (change)="t.isDone = !t.isDone"> 
+            <input type="checkbox" id="task{{ t.id }}" [checked]="t.isDone" (change)="t.isDone = !t.isDone; update(t)"> 
             {{ t.desc }},
             {{ t.isDone }}
         </label>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" id="newTask" 
-            [(ngModel)]="newTask" name="newTask">        
+        <input type="text" class="form-control" id="newTask" (enter)="add()"
+            [(ngModel)]="task.desc" name="newTask">     
     </div>
     <button class="btn btn-primary">Add</button>
 </form>

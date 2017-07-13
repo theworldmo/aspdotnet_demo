@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Vega.Models
+namespace vega.Models
 {
     public class Task
     {

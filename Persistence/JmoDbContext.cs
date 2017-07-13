@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Vega.Models;
+using vega.Models;
 
-namespace Vega.Persistence
+namespace vega.Persistence
 {
     public class JmoDbContext : DbContext
     {

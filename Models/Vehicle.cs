@@ -1,8 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using Vega.Models;
+using vega.Models;
 
-namespace Vega.Models
+namespace vega.Models
 {
     public class Vehicle
     {
